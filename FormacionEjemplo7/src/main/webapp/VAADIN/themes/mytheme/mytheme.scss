@@ -1,0 +1,200 @@
+// If you edit this file you need to compile the theme. See README.md for details.
+
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+//$v-background-color: hsl(210, 0%, 98%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+//$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+//---------- Tratando de definir constantes ---------------
+$vaadin-font-family: "Open Sans", sans-serif;
+$vaadin-font-size: 100%;
+$vaadin-font-weight: 300;
+
+$vaadin-gradient-depth: 0%;
+$vaadin-emboss-depth: 0%;
+
+$vaadin-scale: 50px;
+
+$vaadin-primary-color: #66a0e0;
+$vaadin-bg-color3: #666666;
+
+
+@import "../valo/valo.scss";
+
+@mixin mytheme {
+	@include valo;
+	
+//------------- Mis temas personalizados --------------------
+    .top {
+    	background: $vaadin-bg-color3;
+    	color: text-color($vaadin-bg-color3);
+    	padding: $vaadin-scale/8;
+    	position: fixed;
+    	height: $vaadin-scale * 2;
+    	left: 0;
+    	right: 0;
+    }
+    
+    .menu {
+    	background: $vaadin-primary-color;
+    	color: text-color($vaadin-primary-color);
+    	position: fixed;
+    	top: $vaadin-scale * 2;
+    	left: 0;
+    	width: 20%;
+    	bottom: 0;
+    	
+/*     	Distribucion en bloque de botones */
+    	.v-button {
+    		display: block;
+    	} 
+    	
+/*****Pruebas posiblemente se borrara*****/
+    	.v-label-h1 {
+    		font-weight: bold;
+    	}
+/****************************************/    	
+    	
+    	.start,
+    	.admin,
+    	.settings {
+    		.v-button-wrap:before {
+    			font-family: "sampler";
+    		}
+    	}
+    	
+/*     	.start .v-button-wrap:before { */
+/*     		content: "\e003"; */
+/*     	} */
+    	
+/*     	.admin .v-button-wrap:before { */
+/*     		content: "\e004"; */
+/*     	} */
+    	
+/*     	.setting .v-button-wrap:before { */
+/*     		content: "\e005"; */
+/*     	} */
+    }
+    
+    .content.content.content {
+    	margin-top: $vaadin-scale * 2;
+    	padding-left: 20%;
+    }
+    
+    .v-ui[width-range~="0-400px"] {
+    	.menu {
+    		width: 80%;
+    		top: 0;
+    		
+    		&:before {
+    			content: "";
+    			position: absolute;
+    			top: 15px;
+    			right: -50px;
+    			width: 30px;
+    			height: 4px;
+    			background: #000;
+    			box-shadow: 0  8px 0 #000, 0  16px 0 #000;
+    		}
+    		
+    		&:after {
+    			content: "";
+    			position: absolute;
+    			top: 0;
+    			right: -50px;
+    			width: 50px;
+    			height: 50px;
+    		}
+    		
+    		@include transform(translateX(-100%));
+    		@include transition(all ease-in-out 300ms);
+    		
+    		&:hover,
+    		&:focus {
+    			@include transform(translateX(0%));
+    		}
+    	}
+    	
+    	.content.content.content {
+    		padding-left: $vaadin-scale/2; 
+    	}
+    	
+    	.top {
+    		padding-left: 70px;
+    		height: $vaadin-sacle * 1.5;
+    		
+    		.h1 {
+    			font-size: 1.5em;
+    			margin-top: 10px;
+    		}
+    	}
+    }
+    
+    .v-ui[width-range~="401px-768px"] {
+    	.menu {
+    		width: $vaadin-scale * 1.5;
+    		
+    		.v-button-caption {
+    			display: none;
+    		}
+    	}
+    	.content {
+    		padding-left: $vaadin-scale * 1.5 + $vaadin-scale;
+    	}
+    }
+    
+    .form[width-range~="0-400px"] {
+    	.v-has-caption,
+    	.v-textfield {
+    		width: 100%; 
+    	}
+    }
+    
+    .form[width-range~="401px-"] {
+    	.v-caption{
+    		display: inline-block;
+    		width: 12em;
+    	}
+    	
+    	.v-button {
+    		margin-left: 12em * 0.9;
+    	}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
