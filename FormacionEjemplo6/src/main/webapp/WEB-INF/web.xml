@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<display-name>Vaadin Web Application</display-name>
+
+	<context-param>
+		<description>Vaadin production mode</description>
+		<param-name>productionMode</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<context-param>
+	<!-- Definicion de localizacion del context -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/context.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>Vaadin Application Servlet</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+
+		<init-param>
+			<description>Vaadin UI to display</description>
+			<param-name>UI</param-name>
+			<param-value>com.example.FormacionEjemplo6.FormacionEjemplo6</param-value>
+		</init-param>
+
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Vaadin Application Servlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>
